@@ -137,4 +137,160 @@ This project is relevant to studies involving:
 * Numerical benchmark validation
 
 
+## How to Run the Code
+
+### Prerequisites
+
+Before compiling the simulation, ensure the following are installed:
+
+* GNU C++ compiler (`g++`)
+* `make`
+* OpenLB library
+* Optional: ParaView for VTK visualization
+
+The code was developed using the OpenLB framework for Lattice Boltzmann simulations.
+
+---
+
+## Compilation
+
+Navigate to the project directory and compile the code using:
+
+```bash
+make
+```
+
+This will generate the executable file (typically named according to the Makefile configuration).
+
+---
+
+## Running the Simulation
+
+Run the executable with:
+
+```bash
+./cavity2d
+```
+
+or the executable name specified in the Makefile.
+
+During execution, the solver prints:
+
+* iteration step
+* simulation time
+* average energy
+* average density
+
+Example output:
+
+```text
+step i100; t=0.1; av energy=...
+Saving Gif ...
+Saving VTK file ...
+```
+
+---
+
+## Output Files
+
+Simulation results are written into the `tmp/` directory automatically.
+
+Generated outputs include:
+
+| File Type            | Description                      |
+| -------------------- | -------------------------------- |
+| GIF                  | Velocity magnitude visualization |
+| VTK                  | Flow field data for ParaView     |
+| ASCII velocity files | Exported velocity vectors        |
+
+Example generated files:
+
+```text
+tmp/
+├── uz000100.gif
+├── vtk000100.vti
+├── velocity000100.dat
+```
+
+---
+
+## Visualization
+
+### GIF Images
+
+Velocity magnitude snapshots are automatically generated during the simulation.
+
+### ParaView Visualization
+
+VTK files can be opened using ParaView:
+
+```bash
+paraview
+```
+
+Then open the generated `.vti` files from the `tmp/` directory.
+
+You can visualize:
+
+* velocity vectors
+* streamlines
+* vorticity contours
+* scalar velocity magnitude
+
+---
+
+## Simulation Parameters
+
+The main simulation parameters are defined directly in `cavity2d.cpp`.
+
+Key parameters include:
+
+```cpp
+LBunits<T> converter(
+    1e-2,   // Maximum velocity
+    100.,   // Reynolds number
+    100,    // Grid resolution
+    1.,     // Domain length x
+    1.      // Domain length y
+);
+```
+
+You may modify:
+
+| Parameter       | Meaning            |
+| --------------- | ------------------ |
+| Reynolds number | Flow regime        |
+| Grid resolution | Numerical accuracy |
+| Lid velocity    | Flow intensity     |
+| Domain size     | Geometry scaling   |
+
+---
+
+## Notes
+
+* The code uses the D2Q9 lattice model.
+* Boundary conditions are implemented using interpolated velocity boundaries.
+* Results are saved periodically during the simulation.
+* The simulation is configured for a square cavity flow problem.
+
+---
+
+## Parallel Execution
+
+If OpenLB is compiled with MPI support, the code can also run in parallel:
+
+```bash
+mpirun -np 4 ./cavity2d
+```
+
+---
+
+## Cleaning Build Files
+
+To remove compiled files:
+
+```bash
+make clean
+```
+
 
