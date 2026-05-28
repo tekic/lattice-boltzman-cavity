@@ -112,42 +112,6 @@ The inclusion of bottom corner obstacles alters the local velocity field and mod
 
 ---
 
-## Requirements
-
-Typical dependencies may include:
-
-* Python 3.x / MATLAB / C++ (adjust as needed)
-* NumPy
-* Matplotlib
-* SciPy
-
-Example installation:
-
-```bash
-pip install numpy matplotlib scipy
-```
-
----
-
-## Running the Simulation
-
-Example execution:
-
-```bash
-python main.py
-```
-
-or
-
-```bash
-./simulate
-```
-
-depending on the implementation language.
-
-Simulation parameters can usually be modified in configuration files or directly in the source code.
-
----
 
 ## Visualization
 
@@ -172,44 +136,5 @@ This project is relevant to studies involving:
 * Obstacle-fluid interactions
 * Numerical benchmark validation
 
----
 
-## Citation
-
-If you use this code or methodology in academic work, please cite the corresponding manuscript.
-
-```bibtex
-@article{yourcitation,
-  title={Lattice Boltzmann Simulation of Lid-Driven Flow in a Square Cavity with Bottom Corner Obstacles},
-  author={Author Names},
-  journal={Journal Name},
-  year={2026}
-}
-```
-
----
-
-## License
-
-Specify the project license here.
-
-Example:
-
-```text
-MIT License
-```
-
----
-
-## Authors
-
-* Author Name
-* Institution
-* Contact information
-
----
-
-## Acknowledgments
-
-The authors acknowledge the use of numerical methods and computational resources that supported this work.
 
